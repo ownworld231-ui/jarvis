@@ -8,7 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Unpack app
-        run: unzip -o Jarvis.zip
+        run: |
+          unzip -o Jarvis.zip
+          printf "android.useAndroidX=true\norg.gradle.jvmargs=-Xmx2g\n" > Jarvis/gradle.properties
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
